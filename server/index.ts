@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
@@ -23,6 +25,11 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 
 export function log(message: string, source = "express") {
+  // Skip logging if DEBUG_LOGS is set to "false"
+  if (process.env.DEBUG_LOGS === "false") {
+    return;
+  }
+
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
@@ -66,7 +73,9 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    console.error("Internal Server Error:", err);
+    if (process.env.DEBUG_LOGS !== "false") {
+      console.error("Internal Server Error:", err);
+    }
 
     if (res.headersSent) {
       return next(err);
@@ -89,15 +98,9 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
-    () => {
-      log(`serving on port ${port}`);
-    },
-  );
+ const port = parseInt(process.env.PORT || "5000", 10);
+
+httpServer.listen(port, () => {
+  log(`serving on http://localhost:${port}`);
+});
 })();
