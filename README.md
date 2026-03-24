@@ -1,5 +1,8 @@
 # AI Project Generator
 
+**Live Demo Link:** http://localhost:5000/
+**Deployed in Render:** https://ai-projectgenerator01.onrender.com/
+
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)
@@ -509,9 +512,6 @@ npm install
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
@@ -521,12 +521,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Database powered by [Drizzle ORM](https://orm.drizzle.team)
 - AI features by [OpenAI](https://openai.com)
 
-## 📞 Support
-
-For issues, questions, or suggestions:
-- Open an issue on GitHub
-- Check existing issues first
-- Provide detailed error messages and steps to reproduce
 
 ## 🔗 Useful Links
 
@@ -537,8 +531,4 @@ For issues, questions, or suggestions:
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [Render Deployment Guide](https://render.com/docs)
 
----
 
-**Last Updated**: March 24, 2026
-
-Made with ❤️ by the Development Team
